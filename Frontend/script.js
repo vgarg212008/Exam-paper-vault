@@ -1,6 +1,7 @@
 // Backend URL: keep localhost while testing on your PC,
 // then replace with your Render URL after deploying the backend.
-const API_BASE = 'http://localhost:5000';
+const API_BASE = 'https://sliet-pyq.onrender.com';
+
 
 // Store all papers from the database and current filter choices
 let papersList = [];
