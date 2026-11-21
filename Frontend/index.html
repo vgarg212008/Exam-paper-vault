@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SLIET Question Paper Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Official-style academic header -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="crest" aria-hidden="true">SLIET</div>
+        <div>
+          <p class="institute-label">Sant Longowal Institute of Engineering and Technology</p>
+          <h1>Question Paper Archive</h1>
+        </div>
+      </div>
+      <span class="program-pill">Diploma Wing • Minors, Majors &amp; Quizzes</span>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <!-- Search and filter section -->
+    <section class="card-panel filter-panel" aria-label="Search and filter papers">
+      <div class="search-wrap">
+        <label for="searchInput" class="sr-only">Search question papers</label>
+        <input
+          id="searchInput"
+          type="search"
+          placeholder="Search by subject (e.g., Operating Systems), batch, or exam..."
+          autocomplete="off"
+        />
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-title">Semester</span>
+        <div class="chip-row" id="semFilters">
+          <button type="button" class="chip active" data-value="All">All</button>
+          <button type="button" class="chip" data-value="1">Sem 1</button>
+          <button type="button" class="chip" data-value="2">Sem 2</button>
+          <button type="button" class="chip" data-value="3">Sem 3</button>
+          <button type="button" class="chip" data-value="4">Sem 4</button>
+          <button type="button" class="chip" data-value="5">Sem 5</button>
+          <button type="button" class="chip" data-value="6">Sem 6</button>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-title">Exam Type</span>
+        <div class="chip-row" id="typeFilters">
+          <button type="button" class="chip active" data-value="All">All</button>
+          <button type="button" class="chip" data-value="Minor">Minor</button>
+          <button type="button" class="chip" data-value="Major">Major</button>
+          <button type="button" class="chip" data-value="Quiz">Quiz</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Student contribution form -->
+    <details class="card-panel upload-panel" id="uploadPanel">
+      <summary class="upload-summary">
+        <span>Contribute a Question Paper (For Upcoming Batches)</span>
+        <span class="summary-hint">Click to open form</span>
+      </summary>
+
+      <form id="uploadForm" class="upload-form" novalidate>
+        <div class="field">
+          <label for="subject">Subject Name</label>
+          <input id="subject" name="subject" type="text" placeholder="e.g., Computer Architecture" required />
+        </div>
+
+        <div class="field">
+          <label for="semester">Semester</label>
+          <select id="semester" name="semester" required>
+            <option value="" disabled selected>Select semester</option>
+            <option value="1">Semester 1</option>
+            <option value="2">Semester 2</option>
+            <option value="3">Semester 3</option>
+            <option value="4">Semester 4</option>
+            <option value="5">Semester 5</option>
+            <option value="6">Semester 6</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="examType">Exam Type</label>
+          <select id="examType" name="examType" required>
+            <option value="" disabled selected>Select type</option>
+            <option value="Minor">Minor</option>
+            <option value="Major">Major</option>
+            <option value="Quiz">Quiz</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="batch">Batch / Year</label>
+          <input id="batch" name="batch" type="text" placeholder="e.g., 2025 Batch" required />
+        </div>
+
+        <div class="field">
+          <label for="level">Program Level</label>
+          <!-- Add more program levels here later when scaling beyond Diploma -->
+          <select id="level" name="level">
+            <option value="Diploma" selected>Diploma</option>
+            <option value="Degree">Degree</option>
+          </select>
+        </div>
+
+        <div class="field field-full">
+          <label for="pdfUrl">PDF Link (Google Drive / Direct PDF URL)</label>
+          <input id="pdfUrl" name="pdfUrl" type="url" placeholder="https://drive.google.com/..." required />
+        </div>
+
+        <div class="field field-full form-footer">
+          <button type="submit" class="btn btn-primary" id="submitBtn">Submit Question Paper</button>
+          <p id="formMsg" class="form-msg" role="status"></p>
+        </div>
+      </form>
+    </details>
+
+    <!-- Results summary, status box, and paper cards -->
+    <div class="results-bar">
+      <p id="resultCount" class="result-count" role="status"></p>
+    </div>
+
+    <div id="statusBox" class="status-box" hidden></div>
+    <section id="paperList" class="paper-grid" aria-live="polite"></section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>SLIET Student Question Paper Archive • Built for Diploma Students</span>
+      <span>Share past papers to help incoming batches prepare better</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
