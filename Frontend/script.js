@@ -1,5 +1,3 @@
-// Backend URL: keep localhost while testing on your PC,
-// then replace with your Render URL after deploying the backend.
 const API_BASE = 'https://sliet-pyq.onrender.com';
 
 
